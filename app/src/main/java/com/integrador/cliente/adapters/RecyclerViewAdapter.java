@@ -37,7 +37,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         View view ;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
-        view = mInflater.inflate(R.layout.cardveiw_item_book,parent,false);
+        view = mInflater.inflate(R.layout.cardveiw_item_produto,parent,false);
         return new MyViewHolder(view);
     }
 
@@ -51,8 +51,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final Bitmap decoded = BitmapFactory.decodeByteArray(decodeSring, 0, decodeSring.length);
 
         //Primeiros requisitos que vão carregar ao abrir o aplicativo
-        holder.tv_book_title.setText(mData.get(position).getNameProduto());
-        holder.img_book_thumbnail.setImageBitmap(decoded);
+        holder.nomeProduto.setText(mData.get(position).getNameProduto());
+        holder.precoProduto.setText(Integer.toString(mData.get(position).getPreco()));
+        holder.imagemProduto.setImageBitmap(decoded);
         //........................
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -66,11 +67,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(mContext, Produto_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 // passing data to the book activity
-                intent.putExtra("Title",mData.get(position).getNameProduto());
-                intent.putExtra("Description",mData.get(position).getDesc());
-                intent.putExtra("Thumbnail", dadosdaimagem);
+                intent.putExtra("nomeproduto",mData.get(position).getNameProduto());
+                intent.putExtra("precoproduto",mData.get(position).getPreco());
+                intent.putExtra("descproduto",mData.get(position).getDesc());
+                intent.putExtra("imagemproduto", dadosdaimagem);
                 // start the activity
                 mContext.startActivity(intent);
+
+
 
             }
         });
@@ -86,15 +90,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_book_title;
-        ImageView img_book_thumbnail;
+        TextView nomeProduto,precoProduto;
+        ImageView imagemProduto;
         CardView cardView ;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            tv_book_title = (TextView) itemView.findViewById(R.id.book_title_id) ;
-            img_book_thumbnail = (ImageView) itemView.findViewById(R.id.book_img_id);
+            nomeProduto = (TextView) itemView.findViewById(R.id.nomeProduto) ;
+            precoProduto = (TextView) itemView.findViewById(R.id.precoProduto) ;
+            imagemProduto = (ImageView) itemView.findViewById(R.id.imagemProduto);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id);
 
 

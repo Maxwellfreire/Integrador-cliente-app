@@ -14,8 +14,8 @@ import com.integrador.cliente.R;
 
 public class Produto_Activity extends AppCompatActivity {
 
-    private TextView tvtitle, tvdescription, tvcategory;
-    private ImageView img;
+    private TextView setnomeProduto, setdescProduto, setprecoProduto;
+    private ImageView setimagemProduto;
     private Bitmap imagem;
 
     @Override
@@ -23,28 +23,32 @@ public class Produto_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produto);
 
-        tvtitle = (TextView) findViewById(R.id.txttitle);
-        tvdescription = (TextView) findViewById(R.id.txtDesc);
-        tvcategory = (TextView) findViewById(R.id.txtCat);
-        img = (ImageView) findViewById(R.id.bookthumbnail);
+        setnomeProduto = (TextView) findViewById(R.id.setnomeProduto);
+        setprecoProduto = (TextView) findViewById(R.id.setprecoProduto);
+        setdescProduto = (TextView) findViewById(R.id.setdescProduto);
+        setimagemProduto = (ImageView) findViewById(R.id.setimagemProduto);
 
 
         // Recieve data
         Intent intent = getIntent();
-        String Title = intent.getExtras().getString("Title");
-        String Description = intent.getExtras().getString("Description");
+        String nomeproduto = intent.getExtras().getString("nomeproduto");
+        int precoproduto = intent.getIntExtra("precoproduto", 0);
+        String descproduto = intent.getExtras().getString("descproduto");
+
+
 
 
         // Setting values
 
-        tvtitle.setText(Title);
-        tvdescription.setText(Description);
+        setnomeProduto.setText(nomeproduto);
+        setprecoProduto.setText(String.valueOf(precoproduto));
+        setdescProduto.setText(descproduto);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            byte[] dadosdaimagem = bundle.getByteArray("Thumbnail");
+            byte[] dadosdaimagem = bundle.getByteArray("imagemproduto");
             imagem = BitmapFactory.decodeByteArray(dadosdaimagem, 0, dadosdaimagem.length);
 
-            img.setImageBitmap(imagem);
+            setimagemProduto.setImageBitmap(imagem);
 
 
         }

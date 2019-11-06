@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
                 List<Produto> produtos = response.body();
                 RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getApplicationContext(), produtos);
-                myrv.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
+                myrv.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
                 myrv.setAdapter(myAdapter);
 
             }

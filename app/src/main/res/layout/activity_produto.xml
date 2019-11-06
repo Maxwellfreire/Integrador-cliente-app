@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activitys.Produto_Activity"
-    android:background="#fcfcfc">
+    android:background="#fcfcfc"
+    tools:context=".Activitys.Produto_Activity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -19,42 +19,99 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="125dp"
-                android:layout_height="170dp"
-                android:background="#2d2d2d"
-                android:id="@+id/bookthumbnail"
-                android:scaleType="centerCrop"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                app:cardCornerRadius="8dp"
+                android:layout_margin="5dp"
+                android:elevation="10dp">
+
+                <ImageView
+                    android:id="@+id/setimagemProduto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:background="#2d2d2d"
+                    android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
+
+
 
             <TextView
-                android:id="@+id/txttitle"
+                android:id="@+id/setnomeProduto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Book Title"
                 android:layout_marginTop="10dp"
+                android:text="Nome"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtCat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                android:background="#edecec"
-                android:padding="8dp"
-                android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtDesc"
-                android:textSize="18sp"
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="R$"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:text="Valor"
+                        android:id="@+id/setprecoProduto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Detalhes do Produto"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:text="Descrição"
+                    android:id="@+id/setdescProduto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <Button
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:layout_marginTop="30dp"
+                android:textColor="#ffff"
+                android:background="@drawable/custom_btn"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:text="Comprar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+            </Button>
 
 
         </LinearLayout>
+
+
 
 
 
