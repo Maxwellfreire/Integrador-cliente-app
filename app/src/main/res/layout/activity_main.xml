@@ -26,28 +26,23 @@
             android:textFontWeight="@android:integer/status_bar_notification_info_maxnum"
             android:textSize="12pt" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_id"
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/refreshProdutoCli"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp">
+            android:layout_height="match_parent">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </com.baoyz.widget.PullRefreshLayout>
 
 
     </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_carregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="10dp"
-        android:clickable="true"
-        android:onClick="carregarProduto"
-        android:src="@drawable/ic_atualizar"
-        app:backgroundTint="@color/corPar" />
 
 
 </FrameLayout>

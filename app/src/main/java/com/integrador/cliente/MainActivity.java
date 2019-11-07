@@ -11,9 +11,9 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.integrador.cliente.adapters.RecyclerViewAdapter;
 import com.integrador.cliente.boostrap.APIClient;
 import com.integrador.cliente.model.Produto;
@@ -31,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ProgressDialog pDialog;
+    PullRefreshLayout refreshProdutoCli;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         statusdeconectividade();
 
         pDialog = new ProgressDialog(MainActivity.this);
@@ -43,10 +46,18 @@ public class MainActivity extends AppCompatActivity {
 
         Atualizar();
 
-//        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-//        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,lstBook);
-//        myrv.setLayoutManager(new GridLayoutManager(this,3));
-//        myrv.setAdapter(myAdapter);
+        refreshProdutoCli = (PullRefreshLayout) findViewById(R.id.refreshProdutoCli);
+
+        refreshProdutoCli.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                statusdeconectividade();
+                Atualizar();
+
+            }
+        });
+
+        refreshProdutoCli.setRefreshing(false);
 
 
     }
@@ -55,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Atualizar();
     }
+
 
     private void Atualizar() {
         pDialog.setMessage("Carregando...");
@@ -79,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getApplicationContext(), produtos);
                 myrv.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
                 myrv.setAdapter(myAdapter);
+
+                myAdapter.notifyDataSetChanged();
+                refreshProdutoCli.setRefreshing(false);
 
             }
 
@@ -138,8 +153,5 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public void carregarProduto(View view) {
-        statusdeconectividade();
-        Atualizar();
-    }
+
 }
