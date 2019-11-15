@@ -22,11 +22,10 @@
             android:scaleType="centerCrop" />
 
         <LinearLayout
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal">
-
 
 
             <TextView
@@ -45,15 +44,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
-                android:text="R$"
-                android:textColor="#2d2d2d"
-                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/precoProduto"

@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     protected void onResume() {
         super.onResume();
         Atualizar();
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     private void statusdeconectividade() {
 

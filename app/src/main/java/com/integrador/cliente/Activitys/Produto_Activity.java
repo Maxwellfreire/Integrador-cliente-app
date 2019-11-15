@@ -32,7 +32,8 @@ public class Produto_Activity extends AppCompatActivity {
         // Recieve data
         Intent intent = getIntent();
         String nomeproduto = intent.getExtras().getString("nomeproduto");
-        int precoproduto = intent.getIntExtra("precoproduto", 0);
+        String precoproduto = intent.getExtras().getString("precoproduto");
+//        int precoproduto = intent.getIntExtra("precoproduto", 0);
         String descproduto = intent.getExtras().getString("descproduto");
 
 
@@ -41,7 +42,7 @@ public class Produto_Activity extends AppCompatActivity {
         // Setting values
 
         setnomeProduto.setText(nomeproduto);
-        setprecoProduto.setText(String.valueOf(precoproduto));
+        setprecoProduto.setText(precoproduto);
         setdescProduto.setText(descproduto);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {

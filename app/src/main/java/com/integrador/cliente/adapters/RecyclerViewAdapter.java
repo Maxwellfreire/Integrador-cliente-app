@@ -52,7 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         //Primeiros requisitos que vão carregar ao abrir o aplicativo
         holder.nomeProduto.setText(mData.get(position).getNameProduto());
-        holder.precoProduto.setText(Integer.toString(mData.get(position).getPreco()));
+        holder.precoProduto.setText(mData.get(position).getPreco());
         holder.imagemProduto.setImageBitmap(decoded);
         //........................
 
