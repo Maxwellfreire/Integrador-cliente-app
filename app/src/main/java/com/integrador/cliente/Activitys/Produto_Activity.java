@@ -2,15 +2,19 @@ package com.integrador.cliente.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.integrador.cliente.R;
+
+import java.io.ByteArrayOutputStream;
 
 public class Produto_Activity extends AppCompatActivity {
 
@@ -18,6 +22,7 @@ public class Produto_Activity extends AppCompatActivity {
     private ImageView setimagemProduto;
     private Bitmap imagem;
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +34,7 @@ public class Produto_Activity extends AppCompatActivity {
         setimagemProduto = (ImageView) findViewById(R.id.setimagemProduto);
 
 
-        // Recieve data
+
         Intent intent = getIntent();
         String nomeproduto = intent.getExtras().getString("nomeproduto");
         String precoproduto = intent.getExtras().getString("precoproduto");
@@ -39,7 +44,7 @@ public class Produto_Activity extends AppCompatActivity {
 
 
 
-        // Setting values
+
 
         setnomeProduto.setText(nomeproduto);
         setprecoProduto.setText(precoproduto);
@@ -53,6 +58,18 @@ public class Produto_Activity extends AppCompatActivity {
 
 
         }
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        imagem.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+        final byte[] dadosdaimagem = baos.toByteArray();
+
+        setimagemProduto.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view1) {
+                Intent i = new Intent(Produto_Activity.this, VisualActivity.class);
+                i.putExtra("fotoescolhida", dadosdaimagem);
+                startActivity(i);
+            }
+        });
 
 
     }

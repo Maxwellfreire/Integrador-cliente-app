@@ -34,6 +34,14 @@
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/tvInformacao2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Toque na imagem para melhor visualização)">
+
+            </TextView>
+
 
             <TextView
                 android:id="@+id/setnomeProduto"
