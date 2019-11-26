@@ -8,15 +8,19 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.integrador.cliente.adapters.RecyclerViewAdapter;
 import com.integrador.cliente.boostrap.APIClient;
+import com.integrador.cliente.model.Pedido;
 import com.integrador.cliente.model.Produto;
+import com.integrador.cliente.resource.PedidoResource;
 import com.integrador.cliente.resource.ProdutoResource;
 
 
@@ -58,6 +62,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
         refreshProdutoCli.setRefreshing(false);
+
+        String CPF = null;
+
+        Pedido login = new Pedido(CPF);
+        Retrofit retrofit = APIClient.getClient();
+        PedidoResource pedidoResource = retrofit.create(PedidoResource.class);
+        Call<Pedido> call = pedidoResource.post(login);
+
+        call.enqueue(new Callback<Pedido>() {
+            @Override
+            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Pedido> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
     }

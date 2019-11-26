@@ -10,21 +10,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.integrador.cliente.Activitys.Produto_Activity;
 import com.integrador.cliente.R;
+import com.integrador.cliente.boostrap.APIClient;
+import com.integrador.cliente.model.Pedido;
 import com.integrador.cliente.model.Produto;
+import com.integrador.cliente.resource.PedidoResource;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
-    private Context mContext ;
-    private List<Produto> mData ;
+    private Context mContext;
+    private List<Produto> mData;
 
 
     public RecyclerViewAdapter(Context mContext, List<Produto> mData) {
@@ -35,9 +44,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view ;
+        View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
-        view = mInflater.inflate(R.layout.cardveiw_item_produto,parent,false);
+        view = mInflater.inflate(R.layout.cardveiw_item_produto, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -60,6 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         decoded.compress(Bitmap.CompressFormat.JPEG, 70, baos);
         final byte[] dadosdaimagem = baos.toByteArray();
 
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,18 +77,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(mContext, Produto_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 // passing data to the book activity
-                intent.putExtra("nomeproduto",mData.get(position).getNameProduto());
-                intent.putExtra("precoproduto",mData.get(position).getPreco());
-                intent.putExtra("descproduto",mData.get(position).getDesc());
+                intent.putExtra("IDproduto", mData.get(position).getIdProduto());
+                intent.putExtra("IDproduto", mData.get(position).getIdProduto());
+                intent.putExtra("nomeproduto", mData.get(position).getNameProduto());
+                intent.putExtra("precoproduto", mData.get(position).getPreco());
+                intent.putExtra("descproduto", mData.get(position).getDesc());
                 intent.putExtra("imagemproduto", dadosdaimagem);
                 // start the activity
                 mContext.startActivity(intent);
 
 
-
             }
         });
-
 
 
     }
@@ -90,15 +100,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nomeProduto,precoProduto;
+        TextView nomeProduto, precoProduto;
         ImageView imagemProduto;
-        CardView cardView ;
+        CardView cardView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            nomeProduto = (TextView) itemView.findViewById(R.id.nomeProduto) ;
-            precoProduto = (TextView) itemView.findViewById(R.id.precoProduto) ;
+            nomeProduto = (TextView) itemView.findViewById(R.id.nomeProduto);
+            precoProduto = (TextView) itemView.findViewById(R.id.precoProduto);
             imagemProduto = (ImageView) itemView.findViewById(R.id.imagemProduto);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id);
 

@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fcfcfc"
     tools:context=".Activitys.Produto_Activity">
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatcarrinho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:src="@drawable/ic_carrinho"
+        app:backgroundTint="@color/deeppurple"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:maxImageSize="35dp">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,18 +37,18 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_margin="5dp"
                 android:elevation="10dp"
                 app:cardCornerRadius="8dp">
 
+
                 <ImageView
                     android:id="@+id/setimagemProduto"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:background="#2d2d2d"
-                    android:scaleType="centerCrop" />
+                    android:clickable="true" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -61,6 +78,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="R$  "
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
 
                     <TextView
@@ -100,7 +125,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="Comprar"
+                android:onClick="addcarrinho"
+                android:text="Adicionar carrinho"
                 android:textAllCaps="false"
                 android:textColor="#ffff"
                 android:textSize="20sp">
@@ -114,4 +140,4 @@
     </androidx.core.widget.NestedScrollView>
 
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

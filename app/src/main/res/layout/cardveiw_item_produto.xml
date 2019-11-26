@@ -44,6 +44,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <TextView
+                android:text="R$ "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:textColor="#2d2d2d"
+                android:textSize="13sp" />
+
 
             <TextView
                 android:id="@+id/precoProduto"
