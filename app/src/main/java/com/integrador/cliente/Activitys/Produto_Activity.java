@@ -10,7 +10,9 @@ import android.os.Bundle;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,11 +38,22 @@ public class Produto_Activity extends AppCompatActivity {
     private ImageView setimagemProduto;
     private Bitmap imagem;
 
+    Spinner setQuantidadeItem;
+
+    String[] SpinnerQTD = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11",
+            "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"};
+
     @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produto);
+
+        setQuantidadeItem = (Spinner) findViewById(R.id.setQuantidadeItem);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, SpinnerQTD);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        setQuantidadeItem.setAdapter(arrayAdapter);
 
         setnomeProduto = (TextView) findViewById(R.id.setnomeProduto);
         setprecoProduto = (TextView) findViewById(R.id.setprecoProduto);
@@ -115,9 +128,11 @@ public class Produto_Activity extends AppCompatActivity {
 
                 if (tp != null) {
 
+                    String QuantidadeItem = String.valueOf(setQuantidadeItem.getSelectedItem());
+
                     int numerodopedido = tp.getNum_pedido();
                     int numerodoproduto = IDproduto;
-                    int quantidade = 2;
+                    int quantidade = Integer.parseInt(QuantidadeItem);
 
                     String str = precoproduto;
                     int i = Integer.parseInt(str);
@@ -146,6 +161,60 @@ public class Produto_Activity extends AppCompatActivity {
 
                         }
                     });
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Pedido>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+
+
+        });
+
+
+    }
+
+    public void Carrinho(View view) {
+
+
+        Retrofit retrofitt = APIClient.getClient();
+
+        PedidoResource pedidoResource = retrofitt.create(PedidoResource.class);
+
+        Call<List<Pedido>> gett = pedidoResource.get();
+
+        gett.enqueue(new Callback<List<Pedido>>() {
+            @Override
+            public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
+
+
+                Pedido tp = new Pedido();
+
+
+                List<Pedido> pedidos = response.body();
+
+                for (Pedido tipoprodutot : pedidos) {
+
+                    tp = tipoprodutot;
+                }
+
+
+                if (tp != null) {
+
+
+                    Intent intent = new Intent(getApplicationContext(), CarrinhoActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    // passing data to the book activity
+                    intent.putExtra("numeropedido", tp.getNum_pedido());
+
+                    // start the activity
+                    getApplicationContext().startActivity(intent);
 
 
                 }

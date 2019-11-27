@@ -22,7 +22,8 @@ public interface CarrinhoResource {
 
 
     @GET("/carrinho/{id}")
-    Call<List<Carrinho>> get(Integer id);
+    Call<List<Carrinho>> get(@Path("id") int id);
+
 
     @POST("/carrinho")
     Call<Carrinho> post(@Body Carrinho carrinho);

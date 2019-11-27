@@ -9,6 +9,7 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:onClick="Carrinho"
         android:id="@+id/floatcarrinho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -117,6 +118,37 @@
                     android:textSize="13sp" />
             </LinearLayout>
 
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Adicionar quantidade: "
+                android:textColor="#000000"
+                android:textSize="18sp">
+
+            </TextView>
+
+
+            <LinearLayout
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/border"
+                tools:ignore="UselessParent">
+
+                <Spinner
+                    android:id="@+id/setQuantidadeItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ff0000"
+                    android:overlapAnchor="false"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -132,6 +164,8 @@
                 android:textSize="20sp">
 
             </Button>
+
+
 
 
         </LinearLayout>
