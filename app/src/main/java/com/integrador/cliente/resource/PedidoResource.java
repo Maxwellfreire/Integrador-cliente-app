@@ -26,6 +26,9 @@ public interface PedidoResource {
     @POST("/pedido")
     Call<Pedido> post(@Body Pedido pedido);
 
+    @POST("/pedido/{id}")
+    Call<Pedido> post(@Path("id") int id, @Body Pedido pedido);
+
     @PUT("/pedido/{id}")
     Call<Pedido> put(@Path("id") int id, @Body Pedido pedido);
 

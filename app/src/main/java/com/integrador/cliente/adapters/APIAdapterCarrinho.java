@@ -1,25 +1,17 @@
 package com.integrador.cliente.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.integrador.cliente.Activitys.CarrinhoActivity;
 import com.integrador.cliente.R;
 import com.integrador.cliente.boostrap.APIClient;
 import com.integrador.cliente.model.Carrinho;
-import com.integrador.cliente.model.Pedido;
 import com.integrador.cliente.model.Produto;
-import com.integrador.cliente.model.Total;
-import com.integrador.cliente.resource.CarrinhoResource;
-import com.integrador.cliente.resource.PedidoResource;
 import com.integrador.cliente.resource.ProdutoResource;
-import com.integrador.cliente.resource.TotalResource;
 
 import java.util.List;
 
@@ -90,7 +82,6 @@ public class APIAdapterCarrinho extends BaseAdapter {
         campoSUBItem = view.findViewById(R.id.getSUBItem);
 
 
-
         campoQuantidade.setText(Integer.toString(carrinho.getQtd()));
 
 
@@ -135,8 +126,6 @@ public class APIAdapterCarrinho extends BaseAdapter {
         campoValorItem.setText(carrinho.getValor_unidade());
 
         campoSUBItem.setText(carrinho.getSub_total());
-
-
 
 
         return view;

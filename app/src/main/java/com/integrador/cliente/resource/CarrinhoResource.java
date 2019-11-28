@@ -33,4 +33,7 @@ public interface CarrinhoResource {
 
     @DELETE("/carrinho/{id}")
     Call<Void> delete(@Path("id") int id);
+
+    @DELETE("/carrinho/{id}/{id}")
+    Call<Void> delete(@Path("id") int idd,@Path("id") int id);
 }
