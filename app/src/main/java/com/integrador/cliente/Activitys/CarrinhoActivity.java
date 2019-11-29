@@ -56,7 +56,8 @@ public class CarrinhoActivity extends AppCompatActivity {
         Atualizar();
 
         Intent intent = getIntent();
-        int IDproduto = intent.getIntExtra("numeropedido", 0);
+        int IDproduto = intent.getIntExtra("IDproduto", 0);
+        int numeropedido = intent.getIntExtra("numeropedido", 0);
 
 
         refreshCarrinho = (PullRefreshLayout) findViewById(R.id.refreshCarrinho);
@@ -110,14 +111,14 @@ public class CarrinhoActivity extends AppCompatActivity {
     private void Atualizar() {
 
         Intent intent = getIntent();
-        final int IDproduto = intent.getIntExtra("numeropedido", 0);
+        final int numeropedido = intent.getIntExtra("numeropedido", 0);
 
 
         Retrofit retrofit = APIClient.getClient();
 
         CarrinhoResource carrinhoResource = retrofit.create(CarrinhoResource.class);
 
-        Call<List<Carrinho>> get = carrinhoResource.get(IDproduto);
+        Call<List<Carrinho>> get = carrinhoResource.get(numeropedido);
 
         get.enqueue(new Callback<List<Carrinho>>() {
             @Override
@@ -138,7 +139,7 @@ public class CarrinhoActivity extends AppCompatActivity {
 
                     TotalResource totalResource = retrofit.create(TotalResource.class);
 
-                    Call<List<Total>> get = totalResource.get(IDproduto);
+                    Call<List<Total>> get = totalResource.get(numeropedido);
 
                     get.enqueue(new Callback<List<Total>>() {
                         @Override
@@ -288,11 +289,11 @@ public class CarrinhoActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         Intent intent = getIntent();
-                        final int IDproduto = intent.getIntExtra("numeropedido", 0);
+                        final int numeropedido = intent.getIntExtra("numeropedido", 0);
 
                         Retrofit retrofit = APIClient.getClient();
                         FechapedidoResource fechapedidoResource = retrofit.create(FechapedidoResource.class);
-                        Call<Fechapedido> calll = fechapedidoResource.post(IDproduto);
+                        Call<Fechapedido> calll = fechapedidoResource.post(numeropedido);
 
                         calll.enqueue(new Callback<Fechapedido>() {
                             @Override

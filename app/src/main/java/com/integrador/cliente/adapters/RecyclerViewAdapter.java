@@ -78,7 +78,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 // passing data to the book activity
                 intent.putExtra("IDproduto", mData.get(position).getIdProduto());
-                intent.putExtra("IDproduto", mData.get(position).getIdProduto());
                 intent.putExtra("nomeproduto", mData.get(position).getNameProduto());
                 intent.putExtra("precoproduto", mData.get(position).getPreco());
                 intent.putExtra("descproduto", mData.get(position).getDesc());

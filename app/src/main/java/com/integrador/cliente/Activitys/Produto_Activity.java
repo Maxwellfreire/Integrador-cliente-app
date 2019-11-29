@@ -206,15 +206,18 @@ public class Produto_Activity extends AppCompatActivity {
 
 
                 if (tp != null) {
+                    Intent intent = getIntent();
+                    int IDproduto = intent.getIntExtra("IDproduto", 0);
 
 
-                    Intent intent = new Intent(getApplicationContext(), CarrinhoActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Intent intentt = new Intent(getApplicationContext(), CarrinhoActivity.class);
+                    intentt.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     // passing data to the book activity
-                    intent.putExtra("numeropedido", tp.getNum_pedido());
+                    intentt.putExtra("IDproduto", IDproduto);
+                    intentt.putExtra("numeropedido", tp.getNum_pedido());
 
                     // start the activity
-                    getApplicationContext().startActivity(intent);
+                    getApplicationContext().startActivity(intentt);
 
 
                 }

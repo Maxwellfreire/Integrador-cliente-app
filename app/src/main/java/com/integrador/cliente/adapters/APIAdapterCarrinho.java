@@ -1,16 +1,24 @@
 package com.integrador.cliente.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+
+import com.integrador.cliente.Activitys.CarrinhoActivity;
+import com.integrador.cliente.MainActivity;
 import com.integrador.cliente.R;
 import com.integrador.cliente.boostrap.APIClient;
 import com.integrador.cliente.model.Carrinho;
 import com.integrador.cliente.model.Produto;
+import com.integrador.cliente.resource.CarrinhoResource;
 import com.integrador.cliente.resource.ProdutoResource;
 
 import java.util.List;
@@ -19,6 +27,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 
 /**
@@ -126,6 +136,64 @@ public class APIAdapterCarrinho extends BaseAdapter {
         campoValorItem.setText(carrinho.getValor_unidade());
 
         campoSUBItem.setText(carrinho.getSub_total());
+
+        final View finalView = view;
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(finalView.getRootView().getContext());
+                alertDialogBuilder.setIcon(R.drawable.tick);
+                alertDialogBuilder.setTitle("Confirmar exclusão...");
+                alertDialogBuilder.setMessage("Tem certeza que você deseja excluir este item?");
+                alertDialogBuilder.setPositiveButton("NÂO",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                arg0.cancel();
+
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton("SIM",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                final Integer pedido = Item.getNr_pedido();
+                                final Integer numeroproduto = Item.getNr_produto();
+
+
+                                Retrofit retrofit = APIClient.getClient();
+                                CarrinhoResource carrinhoResource = retrofit.create(CarrinhoResource.class);
+                                Call<Void> call = carrinhoResource.delete(pedido, numeroproduto);
+
+                                call.enqueue(new Callback<Void>() {
+                                    @Override
+                                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Void> call, Throwable t) {
+
+                                    }
+                                });
+
+
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+
+            }
+        });
 
 
         return view;
