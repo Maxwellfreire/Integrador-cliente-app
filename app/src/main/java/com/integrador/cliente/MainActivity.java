@@ -8,11 +8,9 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.baoyz.widget.PullRefreshLayout;
@@ -42,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         statusdeconectividade();
 
@@ -157,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
 
     private void mensagemalerta() {
         // Creating alert Dialog with one Button

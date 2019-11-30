@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.google.android.material.snackbar.Snackbar;
+import com.integrador.cliente.MainActivity;
 import com.integrador.cliente.R;
 import com.integrador.cliente.adapters.APIAdapterCarrinho;
 import com.integrador.cliente.boostrap.APIClient;
@@ -242,28 +243,22 @@ public class CarrinhoActivity extends AppCompatActivity {
                                 @Override
                                 public void onFailure(Call<Fechapedido> calll, Throwable t) {
 
-                                    String CPF = null;
+                                    android.app.AlertDialog alertDialog = new android.app.AlertDialog.Builder(
+                                            CarrinhoActivity.this).create();
 
-                                    Pedido login = new Pedido(CPF);
-                                    Retrofit retrofit = APIClient.getClient();
-                                    PedidoResource pedidoResource = retrofit.create(PedidoResource.class);
-                                    Call<Pedido> call = pedidoResource.post(login);
+                                    alertDialog.setTitle("  Sua compra foi realizada com sucesso!");
 
-                                    call.enqueue(new Callback<Pedido>() {
-                                        @Override
-                                        public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                                    alertDialog.setIcon(R.drawable.ic_ok);
 
+                                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                                        }
-
-                                        @Override
-                                        public void onFailure(Call<Pedido> call, Throwable t) {
-                                            Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                                         }
                                     });
 
-                                    finish();
+                                    alertDialog.show();
 
                                 }
                             });
@@ -305,28 +300,22 @@ public class CarrinhoActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(Call<Fechapedido> calll, Throwable t) {
 
-                                String CPF = null;
+                                android.app.AlertDialog alertDialog = new android.app.AlertDialog.Builder(
+                                        CarrinhoActivity.this).create();
 
-                                Pedido login = new Pedido(CPF);
-                                Retrofit retrofit = APIClient.getClient();
-                                PedidoResource pedidoResource = retrofit.create(PedidoResource.class);
-                                Call<Pedido> call = pedidoResource.post(login);
+                                alertDialog.setTitle("  Sua compra foi realizada com sucesso!");
 
-                                call.enqueue(new Callback<Pedido>() {
-                                    @Override
-                                    public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                                alertDialog.setIcon(R.drawable.ic_ok);
 
+                                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
 
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<Pedido> call, Throwable t) {
-                                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                                     }
                                 });
 
-                                finish();
+                                alertDialog.show();
 
                             }
                         });
