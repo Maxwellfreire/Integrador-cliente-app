@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:text="Sub total: "
+                        android:text="Sub total: R$ "
                         android:textColor="#111111"
                         android:textSize="9pt" />
 
@@ -108,7 +108,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="left"
-                        android:text="Valor unidade: "
+                        android:text="Valor unidade: R$ "
                         android:textColor="#111111"
                         android:textSize="9pt" />
 

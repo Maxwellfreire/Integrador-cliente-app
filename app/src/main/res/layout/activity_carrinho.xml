@@ -33,17 +33,23 @@
                 android:textSize="11pt" />
 
             <TextView
-                android:id="@+id/TotalItens"
-                android:layout_marginRight="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="R$"
+                android:textColor="@color/Black"
+                android:textSize="11pt" />
+
+            <TextView
+                android:id="@+id/TotalItens"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
                 android:padding="10dp"
                 android:textColor="@color/Black"
                 android:textSize="11pt" />
 
 
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -89,7 +95,6 @@
             android:orientation="vertical">
 
 
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -108,10 +113,6 @@
 
 
         </LinearLayout>
-
-
-
-
 
 
     </LinearLayout>

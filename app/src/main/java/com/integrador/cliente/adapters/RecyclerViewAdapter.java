@@ -10,25 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.integrador.cliente.Activitys.Produto_Activity;
 import com.integrador.cliente.R;
-import com.integrador.cliente.boostrap.APIClient;
-import com.integrador.cliente.model.Pedido;
 import com.integrador.cliente.model.Produto;
-import com.integrador.cliente.resource.PedidoResource;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 

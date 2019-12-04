@@ -135,10 +135,9 @@ public class Produto_Activity extends AppCompatActivity {
                     int quantidade = Integer.parseInt(QuantidadeItem);
 
                     String str = precoproduto;
-                    int i = Integer.parseInt(str);
 
 
-                    Carrinho carrinho = new Carrinho(numerodopedido, numerodoproduto, quantidade, String.valueOf(i));
+                    Carrinho carrinho = new Carrinho(numerodopedido, numerodoproduto, quantidade, str);
                     Retrofit retrofit = APIClient.getClient();
                     CarrinhoResource carrinhoResource = retrofit.create(CarrinhoResource.class);
                     Call<Carrinho> calll = carrinhoResource.post(carrinho);
